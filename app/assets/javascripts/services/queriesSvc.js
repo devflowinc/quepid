@@ -146,6 +146,8 @@ angular.module('QuepidApp')
               // });
             } else if (passedInSettings.searchEngine === 'algolia') {
               // Not supported
+            } else if (passedInSettings.searchEngine === 'trieve') {
+              // Not supported
             }
           }
 
@@ -678,6 +680,11 @@ angular.module('QuepidApp')
           } else if (settings.searchEngine === 'vectara') {
             return ratedIDs.map(function(id) {
               return 'doc.id = \'' + id + '\'';
+            }).join(' OR ');
+          } else if (settings.searchEngine === 'trieve') {
+            console.log('Rated IDs: ', ratedIDs);
+            return ratedIDs.map(function(id) {
+              return 'id:' + id;
             }).join(' OR ');
           }
         };

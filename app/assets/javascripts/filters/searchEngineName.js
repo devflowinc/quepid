@@ -10,7 +10,8 @@ angular.module('QuepidApp')
         vectara: 'Vectara',
         algolia: 'Algolia',
         static: 'Static File',
-        searchapi: 'Search API'
+        searchapi: 'Search API',
+        trieve: 'Trieve'
       };
 
       return function (input) {

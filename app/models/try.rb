@@ -77,6 +77,9 @@ class Try < ApplicationRecord
       'searchapi' => lambda {
         searchapi_args
       },
+      'trieve' => lambda {
+        trieveapi_args
+      }
     }
 
     search_endpoint_args.fetch(search_endpoint.search_engine).call unless search_endpoint.nil?
@@ -177,6 +180,11 @@ class Try < ApplicationRecord
       SolrArgParser.parse(query_params,
                           curator_vars_map)
     end
+  end
+
+  def trieveapi_args
+    # Use the EsArgParser as currently queries are the same
+    EsArgParser.parse(query_params, curator_vars_map)
   end
 
   def id_from_field_spec

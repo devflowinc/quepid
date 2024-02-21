@@ -221,6 +221,34 @@ angular.module('QuepidApp')
             '};'
           ].join('\n'),
           // no searchUrl or urlFormat because it's code generated!
+        },
+        trieve: {
+          queryParams: [
+            '{',
+            '  "query": "#$query##",',
+            '  "search_type": "hybrid",',
+            '}',
+          ].join('\n'),
+
+          escapeQuery: true,
+          customHeaders: [
+            '{',
+            '  "TR-Dataset": "YOUR_DATASET_ID",',
+            '  "Authorization": "tr-*********************"',
+            '}'
+          ].join('\n'),
+          headerType: 'Custom',
+          fieldSpec: 'id:id',
+          idField: 'id',
+          apiMethod: 'POST',
+          titleField: '',
+          additionalFields: [],
+          numberOfRows: 10,
+          searchEngine: 'trieve',
+          secureSearchUrl: 'https://api.trieve.ai/api/chunk/search',
+          searchUrl: 'https://api.trieve.ai/api/chunk/search',
+          urlFormat: 'http(s)://api.trieve.ai/api/chunk/search',
+          proxyRequests: false,
         }
       };
 
